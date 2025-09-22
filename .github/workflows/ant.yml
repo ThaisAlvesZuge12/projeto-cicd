@@ -1,17 +1,22 @@
-name: Alerta no Discord
+name: Alertas no Discord
 
 on:
   push:
     branches:
-      - main
+      - main  # ou outro branch que você deseja monitorar
 
 jobs:
-  notify:
+  discord_alert:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Enviar alerta para o Discord
-        uses: Ilshidur/action-discord@v2
-        with:
-          args: "🚀 Novo commit no branch main por ${{ github.actor }}"
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+    - name: Enviar alerta para o Discord
+      uses: Ilshidur/action-discord@1.1.0
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: |
+          🚀 Novo push realizado no branch **${{ github.ref }}**!
+          Commit: ${{ github.sha }}
+          Autor: ${{ github.actor }}
+          Mensagem: ${{ github.event.head_commit.message }}
+

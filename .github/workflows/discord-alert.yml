@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Enviar alerta para Discord
-        uses: Ilshidur/action-discord@v2.1.0
+        uses: ilshidur/action-discord@master
         with:
-          message: |
+          args: |
             🚀 Pull Request #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}
             Estado: ${{ github.event.action }}
             Autor: ${{ github.actor }}

@@ -54,4 +54,8 @@ public class MainTest {
     void testSaudacaoNaoNula() {
         assertNotNull(Main.saudacao());
     }
+    @Test
+void testSomaComZero() {
+    assertEquals(7, Main.soma(7, 0));
+}
 }

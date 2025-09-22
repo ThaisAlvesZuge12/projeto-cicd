@@ -28,4 +28,30 @@ public class MainTest {
     void testInverter() {
         assertEquals("cba", Main.inverter("abc"));
     }
+
+    // Novos testes sugeridos
+    @Test
+    void testSomaNegativos() {
+        assertEquals(-5, Main.soma(-2, -3));
+    }
+
+    @Test
+    void testMultiplicaPorZero() {
+        assertEquals(0, Main.multiplica(10, 0));
+    }
+
+    @Test
+    void testEhParZero() {
+        assertTrue(Main.ehPar(0));
+    }
+
+    @Test
+    void testInverterPalavraVazia() {
+        assertEquals("", Main.inverter(""));
+    }
+
+    @Test
+    void testSaudacaoNaoNula() {
+        assertNotNull(Main.saudacao());
+    }
 }

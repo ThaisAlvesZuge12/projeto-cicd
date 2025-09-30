@@ -1,0 +1,26 @@
+name: Alerta Discord
+
+on:
+  pull_request:
+    types: [opened, closed, synchronize]
+  push:
+    branches:
+      - main
+
+jobs:
+  discord_alert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar alerta para Discord
+        uses: ilshidur/action-discord@master
+        with:
+          
+          args: |
+            🚀 Pull Request #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}
+            Estado: ${{ github.event.action }}
+            🔔 Nova atualização feita pela Thaís!
+            Autor: ${{ github.actor }}
+            Link: ${{ github.event.pull_request.html_url }}
+
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
